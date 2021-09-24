@@ -1,6 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
 
+import System.IO
+
 import Parser
 import Syntax
 import Eval
@@ -8,6 +10,7 @@ import Eval
 main :: IO ()
 main = do
   putStr "> "
+  hFlush stdout
   line <- getLine
   case parseString line of
     Left err -> print err >> main
